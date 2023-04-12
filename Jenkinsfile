@@ -1,20 +1,25 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Building helloworld"'
+                echo 'Building the project...'
+                sh 'mvn clean install'
             }
         }
+
         stage('Test') {
             steps {
-                sh 'echo "Testing helloworld"'
+                echo 'Running tests...'
+                sh 'mvn test'
             }
         }
+
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying helloworld"'
+                echo 'Deploying the artifact...'
+                // Add deployment steps here
             }
         }
     }
